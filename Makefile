@@ -1,11 +1,13 @@
 .SUFFIXES: .cxx
 
 SOURCES = main.cpp raytracer.cxx
+TESTS = 
 
 include graphics/include.mk
 include math/include.mk
 include mm/include.mk
 include primitives/include.mk
+include unittests/include.mk
 
 OBJS := ${SOURCES:.cpp=.o}
 OBJS := ${OBJS:.cxx=.o}
@@ -16,7 +18,10 @@ CPP = g++
 BIN = ./raytracer
 IMAGEVIEWER = eog
 
-all: $(BIN)
+TEST = unittest/test
+
+all: $(BIN) $(TEST)
+	$(TEST)
 
 clean: 
 	rm -f $(OBJS) $(BIN)
@@ -33,6 +38,9 @@ $(BIN): $(OBJS)
 
 .cxx.o:
 	$(CPP) $(CXXFLAGS) -o $@ -c $<
+
+$(TEST): $(TESTS)
+	$(CPP) $(CXXFLAGS) -o $@ -c unittest/main.cpp
 
 deps: 
 	makedepend $(SOURCES)
