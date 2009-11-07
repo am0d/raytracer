@@ -64,26 +64,38 @@ float Color::getB () {
 }
 
 void Color::setR (float r) {
-    if (r >= 0.0) {
-        _r = r;
-    } else {
+    if (r <= 0.0) {
         _r = 0.0;
+    }
+    else if (r >= 1.0) {
+        _r = 1.0;
+    }
+    else {
+        _r = r;
     }
 }
 
 void Color::setG (float g) {
-    if (g >= 0.0) {
-        _g = g;
-    } else {
+    if (g <= 0.0) {
         _g = 0.0;
+    }
+    else if (g >= 1.0) {
+        _g = 1.0;
+    }
+    else {
+        _g = g;
     }
 }
 
 void Color::setB (float b) {
-    if (b >= 0.0) {
-        _b = b;
-    } else {
+    if (b <= 0.0) {
         _b = 0.0;
+    }
+    else if (b >= 1.0) {
+        _b = 1.0;
+    }
+    else {
+        _b = b;
     }
 }
 
@@ -108,21 +120,12 @@ Color Color::operator + (const Color& other) {
 }
 
 Color Color::operator * (float factor) {
-    _r *= factor;
-    _g *= factor;
-    _b *= factor;
+    Color newColor;
+    newColor.setR(_r * factor);
+    newColor.setG(_g * factor);
+    newColor.setB(_b * factor);
 
-    if (_r > 1.0) {
-        _r = 1.0;
-    }
-
-    if (_g > 1.0) {
-        _g = 1.0;
-    }
-
-    if (_b > 1.0) {
-        _b = 1.0;
-    }
+    return newColor;
 }
 
 Color Color::operator = (const Color& other) {

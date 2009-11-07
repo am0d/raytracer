@@ -6,7 +6,7 @@
 #ifndef color_hpp
 #define color_hpp
 
-typedef class Color {
+class Color {
     public:
         Color ();
         Color (float r, float g, float b);

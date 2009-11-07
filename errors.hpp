@@ -6,7 +6,7 @@
 #ifndef errors_hpp
 #define errors_hpp
 
-typedef enum ErrorCode {
+enum ErrorCode {
 	E_SUCCESS,
 	E_FAILURE,
 	E_OUT_OF_RANGE,

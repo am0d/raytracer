@@ -9,7 +9,7 @@
 #include "color.hpp"
 #include "../errors.hpp"
 
-typedef class Bitmap {
+class Bitmap {
     public:
         Bitmap ();
         Bitmap (int width, int height);
