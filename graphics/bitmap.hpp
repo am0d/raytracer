@@ -6,29 +6,31 @@
 #ifndef bitmap_hpp
 #define bitmap_hpp
 
-#include "../header.hpp"
+#include "color.hpp"
+#include "../errors.hpp"
 
 typedef class Bitmap {
-	public:
-		Bitmap ();
-		Bitmap (int width, int height);
-		Bitmap (const Bitmap& other);
+    public:
+        Bitmap ();
+        Bitmap (int width, int height);
+        Bitmap (const Bitmap& other);
 
-		~Bitmap ();
+        ~Bitmap ();
 
-		int getWidth ();
-		int getHeight ();
+        int getWidth ();
+        int getHeight ();
 
-		void setWidth (int width);	//WARNING: calling this function erases all data in the bitmap
-		void setHeight (int height);	//WARNING: calling this function erases all data in the bitmap
+        void setWidth (int width);	//WARNING: calling this function erases all data in the bitmap
+        void setHeight (int height);	//WARNING: calling this function erases all data in the bitmap
 
-		ErrorCode saveAsTGA (char* fileName);
-		ErrorCode putPixel (int x, int y, Color& color);
-		ErrorCode putPixel (int x, int y, unsigned char r, unsigned char g, unsigned char b);
+        ErrorCode saveAsTGA (char* fileName);
+        ErrorCode putPixel (int x, int y, Color& color);
+        ErrorCode putPixel (int x, int y, unsigned char r, unsigned char g, unsigned char b);
+        Color getPixel (int x, int y);
 
-	private:
-		int _width, _height;
-		char* _pixelData;
+    private:
+        int _width, _height;
+        char* _pixelData;
 
 
 };

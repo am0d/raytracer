@@ -1,4 +1,4 @@
-#include "header.hpp"
+#include "raytracer.hpp"
 
 RayTracer::RayTracer () {
 	_left = -4;

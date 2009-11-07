@@ -6,30 +6,28 @@
 #ifndef color_hpp
 #define color_hpp
 
-#include "../header.hpp"
-
 typedef class Color {
-	public:
-		Color ();
-		Color (float r, float g, float b);
-		Color (const Color& other);
+    public:
+        Color ();
+        Color (float r, float g, float b);
+        Color (const Color& other);
 
-		~Color ();
+        ~Color ();
 
-		float getR ();
-		float getG ();
-		float getB ();
+        float getR ();
+        float getG ();
+        float getB ();
 
-		void setR (float r);
-		void setG (float g);
-		void setB (float b);
+        void setR (float r);
+        void setG (float g);
+        void setB (float b);
 
-		Color operator + (const Color& other);
-		Color operator * (float factor);
-		Color operator = (const Color& other);
+        Color operator + (const Color& other);
+        Color operator * (float factor);
+        Color operator = (const Color& other);
 
-	private:
-		float _r, _g, _b;
+    private:
+        float _r, _g, _b;
 };
 
 #endif

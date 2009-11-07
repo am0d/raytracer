@@ -1,1 +1,1 @@
-SOURCES += graphics/color.cxx graphics/bitmap.cxx
+SOURCES += $(wildcard graphics/*.cxx)

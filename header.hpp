@@ -15,8 +15,6 @@
 #include <SDL/SDL.h>
 
 
-#include "mm/mmgr.h"
-
 #include "errors.hpp"
 #include "graphics/color.hpp"
 #include "graphics/bitmap.hpp"
