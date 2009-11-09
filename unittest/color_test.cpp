@@ -82,6 +82,26 @@ namespace {
         EXPECT_FLOAT_EQ (color1.getR()*0.5, color2.getR());
         EXPECT_FLOAT_EQ (color1.getG()*0.5, color2.getG());
         EXPECT_FLOAT_EQ (color1.getB()*0.5, color2.getB());
+
+        color2 = color1 * 2.0;
+        EXPECT_FLOAT_EQ (color2.getR(), 1.0);
+        EXPECT_FLOAT_EQ (color2.getG(), 1.0);
+        EXPECT_FLOAT_EQ (color2.getB(), 1.0);
+
+        color2 = color1 * -1.0;
+        EXPECT_FLOAT_EQ (color2.getR(), 0.0);
+        EXPECT_FLOAT_EQ (color2.getG(), 0.0);
+        EXPECT_FLOAT_EQ (color2.getB(), 0.0);
+    }
+
+    TEST(ColorTest, AdditionOperatorWorks) {
+        Color color1 (0.3, 0.4, 0.5);
+        Color color2 (0.4, 0.5, 0.6);
+        Color color3 = color1 + color2;
+
+        EXPECT_FLOAT_EQ (color1.getR()+color2.getR(), color3.getR());
+        EXPECT_FLOAT_EQ (color1.getG()+color2.getG(), color3.getG());
+        EXPECT_FLOAT_EQ (1.0, color3.getB());
     }
 }
 

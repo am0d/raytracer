@@ -100,23 +100,12 @@ void Color::setB (float b) {
 }
 
 Color Color::operator + (const Color& other) {
-    _r += other._r;
-    _g += other._g;
-    _b += other._b;
+    Color newColor;
+    newColor.setR (_r + other._r);
+    newColor.setG (_g + other._g);
+    newColor.setB (_b + other._b);
 
-    if (_r > 1.0) {
-        _r = 1.0;
-    }
-
-    if (_g > 1.0) {
-        _g = 1.0;
-    }
-
-    if (_b > 1.0) {
-        _b = 1.0;
-    }
-
-    return *this;
+    return newColor;
 }
 
 Color Color::operator * (float factor) {
