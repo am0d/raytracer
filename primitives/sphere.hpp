@@ -8,7 +8,7 @@
 
 #include "../header.hpp"
 
-typedef class Sphere : public Primitive {
+class Sphere : public Primitive {
 	public:
 		Sphere ();
 		Sphere (Vector3 origin, float radius = 1.0, Color color = Color (1.0,1.0,1.0), bool isLight=false);

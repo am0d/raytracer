@@ -1,15 +1,12 @@
 #include <fstream>
+#include <string.h>
 #include "bitmap.hpp"
 
-Bitmap::Bitmap () {
-    _width = 640;
-    _height = 480;
+Bitmap::Bitmap ():
+    _width(640), _height(480) {
+    _pixelData = new unsigned char [_width * _height * 3];
 
-    _pixelData = new char [_width * _height * 3];
-
-    for (int i = 0; i < _width * _height * 3; i++) {
-        _pixelData [i] = 0;
-    }
+    memset (_pixelData, 0, _width*_height*3);
 }
 
 Bitmap::Bitmap (int width, int height) {
@@ -26,19 +23,33 @@ Bitmap::Bitmap (int width, int height) {
         _height = 480;	//default to 480 high
     }
     
-    _pixelData = new char [_width * _height * 3];
+    _pixelData = new unsigned char [_width * _height * 3];
+    memset (_pixelData, 0, _width*_height*3);
 }
 
 Bitmap::Bitmap (const Bitmap& other) {
     _width = other._width;
     _height = other._height;
+    _pixelData = new unsigned char [_width * _height * 3];
+    memcpy (_pixelData, other._pixelData, _width*_height*3);
+}
 
+Bitmap& Bitmap::operator = (Bitmap other) {
+    if (_pixelData) delete _pixelData;
+
+    _width = other._width;
+    _height = other._height;
+    _pixelData = new unsigned char [_width * _height * 3];
+    memcpy (_pixelData, other._pixelData, _width*_height*3);
+
+    return *this;
 }
 
 Bitmap::~Bitmap () {
     if (_pixelData) {
         delete[] _pixelData;
     }
+    _pixelData = NULL;
 }
 
 int Bitmap::getWidth () {
@@ -68,35 +79,24 @@ void Bitmap::setHeight (int height) {
 }
 
 ErrorCode Bitmap::putPixel (int x, int y, Color& color) {
-    if ((x > _width) or (y > _height)) {
+    if ((x >= _width) || (x < 0)
+            || (y >= _height) || (y < 0)) {
         return E_OUT_OF_RANGE;
     }
 
-    _pixelData [y * _width * 3 + x * 3 + 0] = (char) (color.getB () * 255);
-    _pixelData [y * _width * 3 + x * 3 + 1] = (char) (color.getG () * 255);
-    _pixelData [y * _width * 3 + x * 3 + 2] = (char) (color.getR () * 255);
+    _pixelData [y*_width*3 + x*3 + 0] = (char) (color.getB () * 255);
+    _pixelData [y*_width*3 + x*3 + 1] = (char) (color.getG () * 255);
+    _pixelData [y*_width*3 + x*3 + 2] = (char) (color.getR () * 255);
 
     return E_SUCCESS;
 }
 
-ErrorCode Bitmap::putPixel (int x, int y, unsigned char r, unsigned char g, unsigned char b) {
-    if ((x > _width) or (y > _height)) {
-        return E_OUT_OF_RANGE;
-    }
-
-    _pixelData [y * _width * 3 + x * 3 + 0] = b;
-    _pixelData [y * _width * 3 + x * 3 + 1] = g;
-    _pixelData [y * _width * 3 + x * 3 + 2] = r;
-
-    return E_FAILURE;
-}
-
 Color Bitmap::getPixel (int x, int y) {
-    Color color;
-
-    color.setB (_pixelData [y * _width * 3 + x * 3 + 0]);
-    color.setG (_pixelData [y * _width * 3 + x * 3 + 1]);
-    color.setR (_pixelData [y * _width * 3 + x * 3 + 2]);
+    Color color (
+            (_pixelData [y*_width*3 + x*3 + 2]) / 255.0,
+            (_pixelData [y*_width*3 + x*3 + 1]) / 255.0,
+            (_pixelData [y*_width*3 + x*3 + 0]) / 255.0
+            );
 
     return color;
 }
@@ -133,7 +133,7 @@ ErrorCode Bitmap::saveAsTGA (char* fileName) {
     }
 
     //now write the pixel data to disk
-    file.write (_pixelData, _width * _height * 3);
+    file.write ((char *) _pixelData, _width * _height * 3);
     if (file.fail ()) {
         file.close();
         return E_FAILURE;

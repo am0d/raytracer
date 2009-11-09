@@ -8,7 +8,7 @@
 
 #include "../header.hpp"
 
-typedef class Ray3D {
+class Ray3D {
 	public:
 		Ray3D ();
 		Ray3D (Vector3 origin, Vector3 direction);

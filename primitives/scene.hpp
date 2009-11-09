@@ -8,7 +8,7 @@
 
 #include "../header.hpp"
 
-typedef class Scene {
+class Scene {
 	public:
 		Scene ();
 		Scene (int numberOfPrimitives, int minX, int maxX, int minY, int maxY, int minZ, int maxZ, int maxRadius);

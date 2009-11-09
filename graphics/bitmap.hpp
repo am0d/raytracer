@@ -14,6 +14,7 @@ class Bitmap {
         Bitmap ();
         Bitmap (int width, int height);
         Bitmap (const Bitmap& other);
+        Bitmap& operator = (Bitmap other);
 
         ~Bitmap ();
 
@@ -25,12 +26,11 @@ class Bitmap {
 
         ErrorCode saveAsTGA (char* fileName);
         ErrorCode putPixel (int x, int y, Color& color);
-        ErrorCode putPixel (int x, int y, unsigned char r, unsigned char g, unsigned char b);
         Color getPixel (int x, int y);
 
     private:
         int _width, _height;
-        char* _pixelData;
+        unsigned char* _pixelData;
 
 
 };

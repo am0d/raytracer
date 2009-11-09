@@ -11,7 +11,7 @@
 #include "primitives/scene.hpp"
 #include "math/ray3d.hpp"
 
-typedef class RayTracer {
+class RayTracer {
 	public:
 		RayTracer ();
 		RayTracer (int left, int right, int top, int bottom);

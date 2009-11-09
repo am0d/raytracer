@@ -8,7 +8,7 @@
 
 #include "../header.hpp"
 
-typedef class Primitive {
+class Primitive {
 	public:
 		Primitive ();
 		Primitive (Color color, bool isLight = false);

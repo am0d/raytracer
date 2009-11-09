@@ -1,7 +1,7 @@
 TESTS = bitmap_test color_test
 
 CPP = c++
-CXXFLAGS = -g -lgtest -fprofile-arcs -ftest-coverage
+CXXFLAGS = -g -lgtest -Wall -pedantic -fprofile-arcs -ftest-coverage
 
 tests: bitmap_test color_test
 	unittest/bitmap_test
