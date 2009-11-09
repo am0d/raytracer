@@ -6,8 +6,6 @@
 #ifndef vector3_hpp
 #define vector3_hpp
 
-#include "../header.hpp"
-
 class Vector3 {
 	public:
 		Vector3 ();
