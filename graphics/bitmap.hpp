@@ -6,6 +6,7 @@
 #ifndef bitmap_hpp
 #define bitmap_hpp
 
+#include <string>
 #include "color.hpp"
 #include "../errors.hpp"
 
@@ -24,7 +25,7 @@ class Bitmap {
         void setWidth (int width);	//WARNING: calling this function erases all data in the bitmap
         void setHeight (int height);	//WARNING: calling this function erases all data in the bitmap
 
-        ErrorCode saveAsTGA (char* fileName);
+        ErrorCode saveAsTGA (std::string fileName);
         ErrorCode putPixel (int x, int y, Color& color);
         Color getPixel (int x, int y);
 

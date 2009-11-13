@@ -11,9 +11,7 @@
 #include <math.h>
 #include <string>
 #include <time.h>
-
-#include <SDL/SDL.h>
-
+#include <stdlib.h>
 
 #include "errors.hpp"
 #include "graphics/color.hpp"

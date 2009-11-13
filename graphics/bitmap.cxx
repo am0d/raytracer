@@ -101,7 +101,7 @@ Color Bitmap::getPixel (int x, int y) {
     return color;
 }
 
-ErrorCode Bitmap::saveAsTGA (char* fileName) {
+ErrorCode Bitmap::saveAsTGA (std::string fileName) {
     char tgaHeader [12] = {0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     char header [6];
     std::ofstream file;
@@ -113,7 +113,7 @@ ErrorCode Bitmap::saveAsTGA (char* fileName) {
     header [4] = 24;	//bpp
     header [5] = 0;
 
-    file.open (fileName, std::ios::out | std::ios::binary);
+    file.open (fileName.c_str(), std::ios::out | std::ios::binary);
     if (file.fail ()) {
         return E_FAILURE;
     }

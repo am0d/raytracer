@@ -6,7 +6,7 @@
 #ifndef ray3d_hpp
 #define ray3d_hpp
 
-#include "../header.hpp"
+#include "vector3.hpp"
 
 class Ray3D {
 	public:
