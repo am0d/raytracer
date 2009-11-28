@@ -136,7 +136,7 @@ ErrorCode Bitmap::saveAsTGA (std::string fileName) {
             r = (char) (_pixelData[y*_width + x].getR () * 256);
             g = (char) (_pixelData[y*_width + x].getG () * 256);
             b = (char) (_pixelData[y*_width + x].getB () * 256);
-            file <<  r << g << b;
+            file <<  b << g << r;
         }
     }
 
