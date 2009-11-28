@@ -4,9 +4,7 @@
 
 Bitmap::Bitmap ():
     _width(640), _height(480) {
-    _pixelData = new unsigned char [_width * _height * 3];
-
-    memset (_pixelData, 0, _width*_height*3);
+    _pixelData = new Color [_width * _height];
 }
 
 Bitmap::Bitmap (int width, int height) {
@@ -23,24 +21,31 @@ Bitmap::Bitmap (int width, int height) {
         _height = 480;	//default to 480 high
     }
     
-    _pixelData = new unsigned char [_width * _height * 3];
-    memset (_pixelData, 0, _width*_height*3);
+    _pixelData = new Color [_width * _height];
 }
 
 Bitmap::Bitmap (const Bitmap& other) {
     _width = other._width;
     _height = other._height;
-    _pixelData = new unsigned char [_width * _height * 3];
-    memcpy (_pixelData, other._pixelData, _width*_height*3);
+    _pixelData = new Color [_width * _height];
+    for (int y=0; y<_height; y++) {
+        for (int x=0; x<_width; x++) {
+            _pixelData[y*_width + x] = other._pixelData[y*_width + x];
+        }
+    }
 }
 
 Bitmap& Bitmap::operator = (Bitmap other) {
-    if (_pixelData) delete _pixelData;
+    if (_pixelData) delete[] _pixelData;
 
     _width = other._width;
     _height = other._height;
-    _pixelData = new unsigned char [_width * _height * 3];
-    memcpy (_pixelData, other._pixelData, _width*_height*3);
+    _pixelData = new Color [_width * _height];
+    for (int y=0; y<_height; y++) {
+        for (int x=0; x<_width; x++) {
+            _pixelData[y*_width + x] = other._pixelData[y*_width + x];
+        }
+    }
 
     return *this;
 }
@@ -84,21 +89,13 @@ ErrorCode Bitmap::putPixel (int x, int y, Color& color) {
         return E_OUT_OF_RANGE;
     }
 
-    _pixelData [y*_width*3 + x*3 + 0] = (char) (color.getB () * 255);
-    _pixelData [y*_width*3 + x*3 + 1] = (char) (color.getG () * 255);
-    _pixelData [y*_width*3 + x*3 + 2] = (char) (color.getR () * 255);
+    _pixelData[y*_width + x] = color;
 
     return E_SUCCESS;
 }
 
 Color Bitmap::getPixel (int x, int y) {
-    Color color (
-            (_pixelData [y*_width*3 + x*3 + 2]) / 255.0,
-            (_pixelData [y*_width*3 + x*3 + 1]) / 255.0,
-            (_pixelData [y*_width*3 + x*3 + 0]) / 255.0
-            );
-
-    return color;
+    return _pixelData[y*_width + x];
 }
 
 ErrorCode Bitmap::saveAsTGA (std::string fileName) {
@@ -133,7 +130,16 @@ ErrorCode Bitmap::saveAsTGA (std::string fileName) {
     }
 
     //now write the pixel data to disk
-    file.write ((char *) _pixelData, _width * _height * 3);
+    for (int y=0; y<_height; y++) {
+        for (int x=0; x<_width; x++) {
+            unsigned char r, g, b;
+            r = (char) (_pixelData[y*_width + x].getR () * 256);
+            g = (char) (_pixelData[y*_width + x].getG () * 256);
+            b = (char) (_pixelData[y*_width + x].getB () * 256);
+            file <<  r << g << b;
+        }
+    }
+
     if (file.fail ()) {
         file.close();
         return E_FAILURE;

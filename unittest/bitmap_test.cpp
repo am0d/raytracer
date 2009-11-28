@@ -1,8 +1,12 @@
 #include <gtest/gtest.h>
+#include <iostream>
 
 #include "../graphics/bitmap.hpp"
 #include "../graphics/color.hpp"
 #include "../errors.hpp"
+
+using std::cout;
+using std::endl;
 
 namespace {
     TEST(BitmapTest, DefaultConstructorCreatesUsableBitmap) {
@@ -55,7 +59,7 @@ namespace {
 
     TEST(BitmapTest, PixelsAreSetCorrectly) {
         Bitmap bitmap (100, 100);
-        Color blue (0.0, 0.0, 1.0);
+        Color blue (0.3, 0.7, 1.0);
         Color pixel;
 
         for (int y=0; y<bitmap.getHeight(); y+=10) {

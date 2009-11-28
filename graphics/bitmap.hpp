@@ -31,7 +31,7 @@ class Bitmap {
 
     private:
         int _width, _height;
-        unsigned char* _pixelData;
+        Color* _pixelData;
 
 
 };
