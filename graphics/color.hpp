@@ -24,7 +24,7 @@ class Color {
 
         Color operator + (const Color& other);
         Color operator * (float factor);
-        Color operator = (const Color& other);
+        Color& operator = (const Color& other);
 
     private:
         float _r, _g, _b;

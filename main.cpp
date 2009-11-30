@@ -1,6 +1,9 @@
-#include "header.hpp"
+#include <cstdlib>
 
-int main (int argc, char* argv []) {
+#include "raytracer.hpp"
+#include "graphics/bitmap.hpp"
+
+int main () {
 	srand ((unsigned) time(NULL));
 	RayTracer tracer;
 

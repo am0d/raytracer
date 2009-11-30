@@ -22,10 +22,9 @@ Scene::Scene (int numberOfPrimitives, int minX, int maxX, int minY, int maxY, in
     _primitives = new Primitive* [_numberOfPrimitives];
 
 
-    Color color = Color (0.0, 0.0, 1.0);
-    _primitives [0] = new Sphere (Vector3 (-3, 0, -2), 2, color);
-    _primitives [1] = new Sphere (Vector3 (3, 0, -2), 2, color);
-    _primitives [2] = new Sphere (Vector3 (0, -3, -2), 1, Color(1.0, 1.0, 1.0));
+    _primitives [0] = new Sphere (Vector3 (-3, 0, -2), 2, Color(1.0, 0.0, 1.0));
+    _primitives [1] = new Sphere (Vector3 (3, 0, -2), 2, Color(1.0, 0.0, 0.0));
+    _primitives [2] = new Sphere (Vector3 (0, -2, 0), 1, Color(1.0, 1.0, 1.0));
     _primitives [2]->setIsLight (true);
 }
 

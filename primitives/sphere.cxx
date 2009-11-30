@@ -52,7 +52,7 @@ Vector3 Sphere::getNormalAt (Vector3 position) {
 	return normal;
 }
 
-float Sphere::findIntersectionWith (Ray3D ray, float minDistance) {
+float Sphere::findIntersectionWith (Ray3D ray, float maxDistance) {
 	//Ray - Sphere intersection test
 	//taken from Graphics Gems
 	//For a diagram (and naming convention)
@@ -68,7 +68,7 @@ float Sphere::findIntersectionWith (Ray3D ray, float minDistance) {
 
 	//the test below is done because squaring two floating point numbers
 	//should! be faster than finding a square root of one float!
-	if ((disc > 0.000001) && (disc * disc < minDistance * minDistance)) {	//we have an intersection!
+	if ((disc > 0.000001) && (disc * disc < maxDistance * maxDistance)) {	//we have an intersection!
 		disc = sqrt (disc);
 		
 		distanceToIntersection = v - disc;

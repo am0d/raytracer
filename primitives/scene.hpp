@@ -6,7 +6,7 @@
 #ifndef scene_hpp
 #define scene_hpp
 
-#include "../header.hpp"
+#include "primitive.hpp"
 
 class Scene {
 	public:

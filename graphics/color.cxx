@@ -1,12 +1,14 @@
 #include "color.hpp"
 
-Color::Color () {
-    _r = 0.0;
-    _g = 0.0;
-    _b = 0.0;
+Color::Color ():
+    _r (0.0),
+    _g (0.0), 
+    _b (0.0) {
+
 }
 
-Color::Color (float r, float g, float b) {
+Color::Color (float r, float g, float b) :
+    _r (r), _g (g), _b (b) {
     //confine 0.0 <= _r <= 1.0
     if (r >= 0.0) {
         if (r <= 1.0) {
@@ -41,10 +43,11 @@ Color::Color (float r, float g, float b) {
     }
 }
 
-Color::Color (const Color& other) {
-    _r = other._r;
-    _g = other._g;
-    _b = other._b;
+Color::Color (const Color& other) :
+    _r (other._r),
+    _g (other._g),
+    _b (other._b) {
+
 }
 
 Color::~Color () {
@@ -117,7 +120,7 @@ Color Color::operator * (float factor) {
     return newColor;
 }
 
-Color Color::operator = (const Color& other) {
+Color& Color::operator = (const Color& other) {
     _r = other._r;
     _g = other._g;
     _b = other._b;

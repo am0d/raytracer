@@ -6,7 +6,7 @@
 #ifndef sphere_hpp
 #define sphere_hpp
 
-#include "../header.hpp"
+#include "primitive.hpp"
 
 class Sphere : public Primitive {
 	public:

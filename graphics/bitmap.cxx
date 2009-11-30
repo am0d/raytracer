@@ -3,30 +3,30 @@
 #include "bitmap.hpp"
 
 Bitmap::Bitmap ():
-    _width(640), _height(480) {
+    _width(640), _height(480),
+    _pixelData (NULL) {
     _pixelData = new Color [_width * _height];
 }
 
-Bitmap::Bitmap (int width, int height) {
+Bitmap::Bitmap (int width, int height):
+    _width (width), _height (height),
+    _pixelData (NULL) {
     //validate the width
-    if (width > 0) {
-        _width = width;
-    } else {
+    if (width <= 0) {
         _width = 640;	//default to 640 wide
     }
     //validate the height
-    if (height > 0) {
-        _height = height;
-    } else {
+    if (height <= 0) {
         _height = 480;	//default to 480 high
     }
     
     _pixelData = new Color [_width * _height];
 }
 
-Bitmap::Bitmap (const Bitmap& other) {
-    _width = other._width;
-    _height = other._height;
+Bitmap::Bitmap (const Bitmap& other):
+    _width (other._width),
+    _height (other._height),
+    _pixelData (NULL) {
     _pixelData = new Color [_width * _height];
     for (int y=0; y<_height; y++) {
         for (int x=0; x<_width; x++) {
@@ -103,10 +103,10 @@ ErrorCode Bitmap::saveAsTGA (std::string fileName) {
     char header [6];
     std::ofstream file;
 
-    header [0] = _width  % 256;
-    header [1] = _width  / 256;
-    header [2] = _height % 256;
-    header [3] = _height / 256;
+    header [0] = static_cast<char> (_width  % 256);
+    header [1] = static_cast<char> (_width  / 256);
+    header [2] = static_cast<char> (_height % 256);
+    header [3] = static_cast<char> (_height / 256);
     header [4] = 24;	//bpp
     header [5] = 0;
 

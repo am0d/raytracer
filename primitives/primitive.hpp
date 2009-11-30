@@ -6,7 +6,9 @@
 #ifndef primitive_hpp
 #define primitive_hpp
 
-#include "../header.hpp"
+#include "../graphics/color.hpp"
+#include "../math/vector3.hpp"
+#include "../math/ray3d.hpp"
 
 class Primitive {
 	public:
