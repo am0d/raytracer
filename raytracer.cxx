@@ -106,7 +106,7 @@ Color RayTracer::traceRay (Ray3D ray, float distance) {
         Vector3 lightDir = light->getOrigin () - pointOfIntersection;
         lightDir.normalize();
         float lightCoef = normal.dotProduct (lightDir);
-        color = color + closestPrim->getColor () * lightCoef;
+        color = color + closestPrim->getColor () * light->getColor () * lightCoef;
     }
 
     return color;

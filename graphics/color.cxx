@@ -103,19 +103,25 @@ void Color::setB (float b) {
 }
 
 Color Color::operator + (const Color& other) {
-    Color newColor;
-    newColor.setR (_r + other._r);
-    newColor.setG (_g + other._g);
-    newColor.setB (_b + other._b);
+    Color newColor (_r + other._r,
+            _g + other._g,
+            _b + other._b);
 
     return newColor;
 }
 
 Color Color::operator * (float factor) {
-    Color newColor;
-    newColor.setR(_r * factor);
-    newColor.setG(_g * factor);
-    newColor.setB(_b * factor);
+    Color newColor (_r * factor,
+            _g * factor,
+            _b * factor);
+
+    return newColor;
+}
+
+Color Color::operator * (Color other) {
+    Color newColor (_r * other._r,
+            _g * other._g,
+            _b * other._b);
 
     return newColor;
 }
