@@ -9,19 +9,19 @@
 #include "primitive.hpp"
 
 class Scene {
-	public:
-		Scene ();
-		Scene (int numberOfPrimitives, int minX, int maxX, int minY, int maxY, int minZ, int maxZ, int maxRadius);
-		//Scene (const Scene& other);
+    public:
+        Scene ();
+        Scene (int numberOfPrimitives, int minX, int maxX, int minY, int maxY, int minZ, int maxZ, int maxRadius);
+        //Scene (const Scene& other);
 
-		~Scene ();
+        ~Scene ();
 
-		int getNumberOfPrimitives ();
-		Primitive* getPrimitive (int number);
+        int getNumberOfPrimitives ();
+        Primitive* getPrimitive (int number);
 
-	private:
-		Primitive** _primitives;
-		int _numberOfPrimitives;
+    private:
+        Primitive** _primitives;
+        int _numberOfPrimitives;
 };
 
 #endif
