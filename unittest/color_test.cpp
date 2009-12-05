@@ -75,7 +75,7 @@ namespace {
     }
 
     TEST(ColorTest, ScaleColorCorrectly) {
-        Color color1 (1.0, 1.0, 1.0);
+        Color color1 (0.7, 1.0, 1.0);
         Color color2;
 
         color2 = color1 * 0.5;
