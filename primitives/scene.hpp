@@ -20,6 +20,8 @@ class Scene {
         Primitive* getPrimitive (int number);
 
     private:
+        Scene (const Scene&);
+        Scene operator = (const Scene&);
         Primitive** _primitives;
         int _numberOfPrimitives;
 };
