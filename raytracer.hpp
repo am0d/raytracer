@@ -29,6 +29,7 @@ class RayTracer {
     private:
 
     Color traceRay (Ray3D ray, float minDistance);
+    RayTracer operator = (const RayTracer&);
 
 
     int _left, _right, _top, _bottom;	//holds the co-ords of our current viewport
