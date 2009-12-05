@@ -9,22 +9,22 @@
 #include "vector3.hpp"
 
 class Ray3D {
-	public:
-		Ray3D ();
-		Ray3D (Vector3 origin, Vector3 direction);
-		Ray3D (const Ray3D& other);
+    public:
+        Ray3D ();
+        Ray3D (Vector3 origin, Vector3 direction);
+        Ray3D (const Ray3D& other);
 
-		~Ray3D ();
+        ~Ray3D ();
 
-		Vector3 getOrigin ();
-		Vector3 getDirection ();
+        Vector3 getOrigin ();
+        Vector3 getDirection ();
 
-		void setOrigin (Vector3 origin);
-		void setDirection (Vector3 direction);
+        void setOrigin (Vector3 origin);
+        void setDirection (Vector3 direction);
 
-	private:
-		Vector3 _origin;
-		Vector3 _direction;
+    private:
+        Vector3 _origin;
+        Vector3 _direction;
 };
 
 #endif
