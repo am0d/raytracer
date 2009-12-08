@@ -133,9 +133,9 @@ ErrorCode Bitmap::saveAsTGA (std::string fileName) {
     for (int y=0; y<_height; y++) {
         for (int x=0; x<_width; x++) {
             unsigned char r, g, b;
-            r = (char) (_pixelData[y*_width + x].getR () * 256);
-            g = (char) (_pixelData[y*_width + x].getG () * 256);
-            b = (char) (_pixelData[y*_width + x].getB () * 256);
+            r = static_cast<char> (_pixelData[y*_width + x].getR () * 256);
+            g = static_cast<char> (_pixelData[y*_width + x].getG () * 256);
+            b = static_cast<char> (_pixelData[y*_width + x].getB () * 256);
             file <<  b << g << r;
         }
     }

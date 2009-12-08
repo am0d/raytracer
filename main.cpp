@@ -4,7 +4,7 @@
 #include "graphics/bitmap.hpp"
 
 int main () {
-	srand ((unsigned) time(NULL));
+	srand (static_cast<unsigned> (time(NULL)));
 	RayTracer tracer;
 
 	tracer.initScene ();
