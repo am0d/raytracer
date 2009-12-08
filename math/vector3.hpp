@@ -28,17 +28,11 @@ class Vector3 {
     Vector3 operator + (const Vector3& other);
     Vector3 operator - (const Vector3& other);
     Vector3 operator * (float factor);
-    void operator = (const Vector3 other);
+    Vector3& operator = (const Vector3 other);
     protected:
-    union {
-        float _x, _r;
-    };
-    union {
-        float _y, _g;
-    };
-    union {
-        float _z, _b;
-    };
+        float _x;
+        float _y;
+        float _z;
 };
 
 #endif
