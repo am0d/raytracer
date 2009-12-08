@@ -30,8 +30,8 @@ class Primitive {
     void setColor (Color color);
 
     private:
-    bool _isLight;
     Color _color;
+    bool _isLight;
 };
 
 #endif

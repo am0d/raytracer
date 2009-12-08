@@ -1,18 +1,19 @@
 #include "../header.hpp"
 
-Primitive::Primitive () {
-    _color = Color ();
-    _isLight = false;
+Primitive::Primitive ():
+    _color (Color ()), _isLight (false) {
+        
 }
 
-Primitive::Primitive (Color color, bool isLight) {
-    _color = color;
-    _isLight = isLight;
+Primitive::Primitive (Color color, bool isLight):
+    _color(color), _isLight (isLight) {
+
 }
 
-Primitive::Primitive (const Primitive& other) {
-    _color = other._color;
-    _isLight = other._isLight;
+Primitive::Primitive (const Primitive& other):
+    _color (other._color),
+    _isLight (other._isLight) {
+
 }
 
 Primitive::~Primitive () {
