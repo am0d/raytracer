@@ -16,10 +16,10 @@ CPP = g++
 BIN = ./raytracer
 IMAGEVIEWER = eog
 
-all: $(BIN) 
-	@$(MAKE) -f unittest/Makefile tests
+include unittest/Makefile
+all: $(BIN) tests
 
-clean: 
+clean: test_clean
 	rm -f $(OBJS) $(BIN)
 
 run: $(BIN)
