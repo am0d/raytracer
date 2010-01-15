@@ -1,7 +1,7 @@
 TESTS = bitmap_test color_test vector3_test ray3d_test
 
 CPP = c++
-CXXFLAGS = -g -lgtest -Wall -pedantic 
+CXXFLAGS = -g -lgtest -Wall -pedantic -ansi -Warray-bounds -Wclobbered -Wconversion -Wdeprecated -Weffc++ -Wenum-compare -Wextra -Wreorder -Wold-style-cast -Wabi
 
 tests: $(TESTS)
 	unittest/bitmap_test

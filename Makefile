@@ -9,7 +9,7 @@ include primitives/include.mk
 
 OBJS := ${SOURCES:.cpp=.o}
 OBJS := ${OBJS:.cxx=.o}
-CXXFLAGS = -g -Wall -pedantic
+CXXFLAGS = -g -Wall -pedantic -ansi -Warray-bounds -Wclobbered -Wconversion -Wdeprecated -Weffc++ -Wenum-compare -Wextra -Wreorder -Wold-style-cast -Wabi
 LDFLAGS = 
 
 CPP = g++
