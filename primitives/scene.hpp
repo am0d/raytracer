@@ -22,8 +22,8 @@ class Scene {
     private:
         Scene (const Scene&);
         Scene operator = (const Scene&);
-        Primitive** _primitives;
         int _numberOfPrimitives;
+        Primitive** _primitives;
 };
 
 #endif

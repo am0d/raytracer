@@ -1,31 +1,32 @@
 /* Author: a_m0d <a_m0d@hotmail.com>
-* Date: June 2008
-* License: GPL version 2.0 or later
-*/
+ * Date: June 2008
+ * License: GPL version 2.0 or later
+ */
 
 #include "../header.hpp"
 
-Scene::Scene () {
-    _numberOfPrimitives = 3;
+Scene::Scene ():
+    _numberOfPrimitives (0),
+    _primitives (NULL) {
 
-    _primitives = new Primitive* [_numberOfPrimitives];
-    _primitives [0] = new Sphere (Vector3 (-1.0, 0.0, 0.0));
-    _primitives [1] = new Sphere (Vector3 ( 0.0, 0.0, 0.0));
-    _primitives [2] = new Sphere (Vector3 ( 1.0, 0.0, 0.0));
+        _primitives = new Primitive* [_numberOfPrimitives];
+        _primitives [0] = new Sphere (Vector3 (-1.0, 0.0, 0.0));
+        _primitives [1] = new Sphere (Vector3 ( 0.0, 0.0, 0.0));
+        _primitives [2] = new Sphere (Vector3 ( 1.0, 0.0, 0.0));
 
-    _primitives [0]->setColor (Color (1.0, 0.0, 0.0));
+        _primitives [0]->setColor (Color (1.0, 0.0, 0.0));
 }
 
-Scene::Scene (int numberOfPrimitives, int minX, int maxX, int minY, int maxY, int minZ, int maxZ, int maxRadius) {
-    _numberOfPrimitives = 3;
+Scene::Scene (int numberOfPrimitives, int minX, int maxX, int minY, int maxY, int minZ, int maxZ, int maxRadius):
+    _numberOfPrimitives (3),
+    _primitives (NULL) {
 
-    _primitives = new Primitive* [_numberOfPrimitives];
+        _primitives = new Primitive* [_numberOfPrimitives];
 
-
-    _primitives [0] = new Sphere (Vector3 (-3, 0, -2), 2, Color(1.0, 0.0, 1.0));
-    _primitives [1] = new Sphere (Vector3 (3, 0, -2), 2, Color(1.0, 0.0, 0.0));
-    _primitives [2] = new Sphere (Vector3 (0, -2, 2), 1, Color(1.0, 1.0, 1.0));
-    _primitives [2]->setIsLight (true);
+        _primitives [0] = new Sphere (Vector3 (-3, 0, -2), 2, Color(1.0, 0.0, 1.0));
+        _primitives [1] = new Sphere (Vector3 (3, 0, -2), 2, Color(1.0, 0.0, 0.0));
+        _primitives [2] = new Sphere (Vector3 (0, -2, 2), 1, Color(1.0, 1.0, 1.0));
+        _primitives [2]->setIsLight (true);
 }
 
 Scene::~Scene () {
