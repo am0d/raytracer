@@ -23,7 +23,7 @@ namespace {
         EXPECT_FLOAT_EQ (color.getR(), 0.395f);
 
         //make sure that we cap in-valid values
-        color.setR (-0.1);
+        color.setR (-0.1f);
         EXPECT_FLOAT_EQ (color.getR(), 0.0f);
         color.setR (1.1f);
         EXPECT_FLOAT_EQ (color.getR(), 1.0f);
@@ -41,7 +41,7 @@ namespace {
         EXPECT_FLOAT_EQ (color.getG(), 0.395f);
 
         //make sure that we cap in-valid values
-        color.setG (-0.1);
+        color.setG (-0.1f);
         EXPECT_FLOAT_EQ (color.getG(), 0.0f);
         color.setG (1.1f);
         EXPECT_FLOAT_EQ (color.getG(), 1.0f);
@@ -59,14 +59,14 @@ namespace {
         EXPECT_FLOAT_EQ (color.getB(), 0.395f);
 
         //make sure that we cap in-valid values
-        color.setB (-0.1);
+        color.setB (-0.1f);
         EXPECT_FLOAT_EQ (color.getB(), 0.0f);
         color.setB (1.1f);
         EXPECT_FLOAT_EQ (color.getB(), 1.0f);
     }
 
     TEST(ColorTest, AssignmentOperatorWorks) {
-        Color color1 (0.3, 0.4, 0.5);
+        Color color1 (0.3f, 0.4f, 0.5f);
         Color color2 = color1;
 
         EXPECT_FLOAT_EQ (color1.getR(), color2.getR());
@@ -75,33 +75,33 @@ namespace {
     }
 
     TEST(ColorTest, ScaleColorCorrectly) {
-        Color color1 (0.7, 1.0, 1.0);
+        Color color1 (0.7f, 1.0f, 1.0f);
         Color color2;
 
-        color2 = color1 * 0.5;
-        EXPECT_FLOAT_EQ (color1.getR()*0.5, color2.getR());
-        EXPECT_FLOAT_EQ (color1.getG()*0.5, color2.getG());
-        EXPECT_FLOAT_EQ (color1.getB()*0.5, color2.getB());
+        color2 = color1 * 0.5f;
+        EXPECT_FLOAT_EQ (color1.getR()*0.5f, color2.getR());
+        EXPECT_FLOAT_EQ (color1.getG()*0.5f, color2.getG());
+        EXPECT_FLOAT_EQ (color1.getB()*0.5f, color2.getB());
 
-        color2 = color1 * 2.0;
-        EXPECT_FLOAT_EQ (color2.getR(), 1.0);
-        EXPECT_FLOAT_EQ (color2.getG(), 1.0);
-        EXPECT_FLOAT_EQ (color2.getB(), 1.0);
+        color2 = color1 * 2.0f;
+        EXPECT_FLOAT_EQ (color2.getR(), 1.0f);
+        EXPECT_FLOAT_EQ (color2.getG(), 1.0f);
+        EXPECT_FLOAT_EQ (color2.getB(), 1.0f);
 
         color2 = color1 * -1.0;
-        EXPECT_FLOAT_EQ (color2.getR(), 0.0);
-        EXPECT_FLOAT_EQ (color2.getG(), 0.0);
-        EXPECT_FLOAT_EQ (color2.getB(), 0.0);
+        EXPECT_FLOAT_EQ (color2.getR(), 0.0f);
+        EXPECT_FLOAT_EQ (color2.getG(), 0.0f);
+        EXPECT_FLOAT_EQ (color2.getB(), 0.0f);
     }
 
     TEST(ColorTest, AdditionOperatorWorks) {
-        Color color1 (0.3, 0.4, 0.5);
-        Color color2 (0.4, 0.5, 0.6);
+        Color color1 (0.3f, 0.4f, 0.5f);
+        Color color2 (0.4f, 0.5f, 0.6f);
         Color color3 = color1 + color2;
 
         EXPECT_FLOAT_EQ (color1.getR()+color2.getR(), color3.getR());
         EXPECT_FLOAT_EQ (color1.getG()+color2.getG(), color3.getG());
-        EXPECT_FLOAT_EQ (1.0, color3.getB());
+        EXPECT_FLOAT_EQ (1.0f, color3.getB());
     }
 }
 
