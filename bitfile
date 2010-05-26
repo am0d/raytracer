@@ -1,0 +1,12 @@
+raytracer = Unix("raytracer")
+raytracer.CPP
+"""raytracer.add_flag(['-pedantic', '-Wall', '-ansi',
+                              '-Warray-bounds',
+                              '-Wclobbered', '-Wconversion', '-Wdeprecated',
+                              '-Weffc++', '-Wenum-compare', '-Wextra',
+                              '-Wreorder', '-Wold-style-cast', '-Wabi'])
+                              """
+raytracer.add_files(['graphics', 'math', 'primitives', 'raytracer.cxx',
+                     'raytracer.hpp', 'header.hpp', 'main.cpp'])
+raytracer.remove_directory('./unittest')
+bit.add_project(raytracer)
