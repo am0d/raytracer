@@ -6,7 +6,6 @@ raytracer.CPP
                               '-Weffc++', '-Wenum-compare', '-Wextra',
                               '-Wreorder', '-Wold-style-cast', '-Wabi'])
                               """
-raytracer.add_files(['graphics', 'math', 'primitives', 'raytracer.cxx',
+raytracer.files(['graphics', 'math', 'primitives', 'raytracer.cxx',
                      'raytracer.hpp', 'header.hpp', 'main.cpp'])
-raytracer.remove_directory('./unittest')
-bit.add_project(raytracer)
+bit.project(raytracer)
