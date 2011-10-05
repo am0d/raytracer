@@ -8,7 +8,7 @@
 
 #include <string>
 #include "color.hpp"
-#include "../errors.hpp"
+#include "errors.hpp"
 
 class Bitmap {
     public:

@@ -3,7 +3,7 @@
  * License: GPL version 2.0 or later
  */
 
-#include "../header.hpp"
+#include "ray3d.hpp"
 
 Ray3D::Ray3D ():
     _origin (Vector3 ()), _direction (Vector3 ()) {

@@ -1,4 +1,4 @@
-#include "../header.hpp"
+#include "primitive.hpp"
 
 Primitive::Primitive ():
     _color (Color ()), _isLight (false) {

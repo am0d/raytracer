@@ -1,0 +1,7 @@
+*.o
+*.swp
+.*
+*.bak
+*~
+bin/raytracer
+!.gitignore

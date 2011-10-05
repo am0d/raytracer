@@ -1,7 +1,7 @@
 #include <cstdlib>
 
 #include "raytracer.hpp"
-#include "graphics/bitmap.hpp"
+#include "bitmap.hpp"
 
 int main () {
 	srand (static_cast<unsigned> (time(NULL)));

@@ -3,7 +3,10 @@
  * License: GPL version 2.0 or later
  */
 
-#include "../header.hpp"
+#include <iostream>
+
+#include "scene.hpp"
+#include "sphere.hpp"
 
 Scene::Scene ():
     _numberOfPrimitives (0),
@@ -42,7 +45,7 @@ int Scene::getNumberOfPrimitives () {
 
 Primitive* Scene::getPrimitive (int number) {
     if (number > _numberOfPrimitives) {
-        cout << "Error: primitive number requested to high" << endl;
+        std::cout << "Error: primitive number requested to high" << std::endl;
         return NULL;
     }
 

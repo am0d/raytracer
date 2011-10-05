@@ -6,10 +6,10 @@
 #ifndef raytracer_hpp
 #define raytracer_hpp
 
-#include "graphics/color.hpp"
-#include "graphics/bitmap.hpp"
-#include "primitives/scene.hpp"
-#include "math/ray3d.hpp"
+#include "color.hpp"
+#include "bitmap.hpp"
+#include "scene.hpp"
+#include "ray3d.hpp"
 
 class RayTracer {
     public:

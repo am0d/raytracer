@@ -1,4 +1,6 @@
-#include "../header.hpp"
+#include <math.h>
+
+#include "sphere.hpp"
 
 Sphere::Sphere () : Primitive (),
     _origin (),
