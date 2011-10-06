@@ -47,12 +47,10 @@ class RayTracer {
     int _left, _right, _top, _bottom;	//holds the co-ords of our current viewport
 
     float _deltaX, _deltaY;	//holds the amount to move our rays by
-    float _sigmaX, _sigmaY;	//holds the current x and y of the ray
-    int _curScanLine;	//holds our position on the bitmap
 
     bool _done;		//are we finished this render yet?
 
-    Bitmap* _bitmap;	//holds our render surface
+    Bitmap _bitmap;	//holds our render surface
 
     Scene* _scene;	//list of the spheres in the scene
     //TODO: Change this to a list of primitives!

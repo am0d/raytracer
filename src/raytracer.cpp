@@ -21,12 +21,9 @@ RayTracer::RayTracer () :
     _left (-4), _right (4),
     _top (3), _bottom (-3),
     _deltaX (0.0), _deltaY (0.0),
-    _sigmaX (0.0), _sigmaY (0.0),
-    _curScanLine (0), _done (false),
-    _bitmap (NULL),
+    _done (false),
+    _bitmap (),
     _scene (NULL) {
-
-    _bitmap = new Bitmap ();
 
     _scene = new Scene (5, _left, _right, _bottom, _top, -5, 20, 3);
 }
@@ -35,14 +32,10 @@ RayTracer::~RayTracer () {
     if (_scene) {
         delete _scene;
     }
-
-    if (_bitmap) {
-        delete _bitmap;
-    }
 }
 
 Bitmap* RayTracer::getBitmap () {
-    return _bitmap;
+    return &_bitmap;
 }
 
 bool RayTracer::done () {
@@ -50,13 +43,8 @@ bool RayTracer::done () {
 }
 
 void RayTracer::initScene () {
-    _deltaX = static_cast<float> (_right - _left) / static_cast<float> (_bitmap->getWidth ());
-    _deltaY = static_cast<float> (_bottom - _top) / static_cast<float> (_bitmap->getHeight ());
-
-    _sigmaX = static_cast<float> (_left);
-    _sigmaY = static_cast<float> (_top);
-
-    _curScanLine = 0;
+    _deltaX = static_cast<float> (_right - _left) / static_cast<float> (_bitmap.getWidth ());
+    _deltaY = static_cast<float> (_bottom - _top) / static_cast<float> (_bitmap.getHeight ());
 
     _done = false;
 }
@@ -66,21 +54,24 @@ bool RayTracer::render () {
 
     ray.setOrigin (Vector3 (0, 0, 5));
 
-    for (; _curScanLine < _bitmap->getHeight (); _curScanLine++) {
-        for (int x = 0; x < _bitmap->getWidth (); x++) {
-            ray.setDirection (Vector3 (_sigmaX, _sigmaY, 0) - ray.getOrigin ());	//no need to normalize - Ray3D does this automatically for us!
+    float sigmaX = static_cast<float> (_left);
+    float sigmaY = static_cast<float> (_top);
+
+    for (int curScanLine = 0; curScanLine < _bitmap.getHeight (); curScanLine++) {
+        for (int x = 0; x < _bitmap.getWidth (); x++) {
+            ray.setDirection (Vector3 (sigmaX, sigmaY, 0) - ray.getOrigin ());	//no need to normalize - Ray3D does this automatically for us!
 
             Color pixelColor = traceRay (ray, 999999999.0f);
 
-            if (_bitmap->putPixel (x, _curScanLine, pixelColor) != E_SUCCESS) {
+            if (_bitmap.putPixel (x, curScanLine, pixelColor) != E_SUCCESS) {
                 return (_done = false);
             }
 
-            _sigmaX += _deltaX;
+            sigmaX += _deltaX;
         }
 
-        _sigmaX = static_cast<float> (_left);
-        _sigmaY += _deltaY;
+        sigmaX = static_cast<float> (_left);
+        sigmaY += _deltaY;
     }
 
     _done = true;
